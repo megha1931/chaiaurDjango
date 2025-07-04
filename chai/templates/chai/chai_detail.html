@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Chai Detail{% endblock %}
+{% block content %}
+<h1 class=" text-2xl border-orange-900 border-y-2 mt-2"> Chai Details</h1>
+
+<div class="container w-1/2 mx-auto bg-orange-950 border-white border-4  mt-3">
+<p class='text-2xl text-center bg-orange-900 m-4'> TEA: {{chai.name}}</p>
+<img class="rounded h-80 w-80 border-white border-2 mx-auto block" src="{{chai.image.url}}" alt="{{chai.name}}">
+<p class="bg-orange-900 text-center w-1/4 mx-auto mt-2 "> Price : 20RS</p>
+<p class='text-center text-xl  mt-2'> Description:{{chai.description}}</p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}All Recipes{% endblock %}
+{% block content %}
+<h1 class="text-2xl border-orange-900 border-y-2 mt-2"> All Recipes</h1>
+<div class ="grid grid-cols-3 gap-4 m-4 ">
+{%for recipe in recipes%}
+ <div class="recipe-item border-2 border-white">
+    <h2 class="text-2xl text-center m-2">Recipe:{{recipe.recipe_name}}</h2>
+    <img class="rounded h-80 w-80 border-white border-2 mx-auto" src="{{recipe.recipe_img.url}}" alt="{{recipe.recipe_name}}">
+    <p class="text-white text-center">
+      <span id="short-text-{{ recipe.id }}">
+          {{ recipe.recipe_description|slice:":4" }}...
+      </span>
+      <span id="full-text-{{ recipe.id }}" class="hidden">
+          {{ recipe.recipe_description }}
+      </span>
+  </p>
+  <button class="text-white mt-2" onclick="toggleText('{{ recipe.id }}')">
+      Read more
+  </button>
+
+ </div>
+ {% endfor %}
+ </div>
+ <script>
+  function toggleText(id) {
+      let shortText = document.getElementById("short-text-" + id);
+      let fullText = document.getElementById("full-text-" + id);
+      let button = event.target;
+
+      if (shortText.classList.contains("hidden")) {
+          shortText.classList.remove("hidden");
+          fullText.classList.add("hidden");
+          button.textContent = "Read more";
+      } else {
+          shortText.classList.add("hidden");
+          fullText.classList.remove("hidden");
+          button.textContent = "Read less";
+      }
+  }
+</script>
+{% endblock %}
+

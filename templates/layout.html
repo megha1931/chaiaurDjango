@@ -1,0 +1,32 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% tailwind_css %}
+    <title>{% block title %}
+        Default title
+        {% endblock %}
+    </title>
+</head>
+<body class="bg-orange-950">
+    <nav class="bg-orange-950 border-white border-2 flex justify-between ">
+        <p class=' text-3xl  text-left p-1 ml-2'>U'r TEA</p>
+    <ul class='flex justify-end gap-5 mx-4 p-2 text-lg'>
+        <li ><a href="{% url 'home' %}">Home</a></li>
+        <li ><a href="{% url 'about' %}">About</a></li>
+        <li ><a href="{% url 'all_recipes' %}">All Recipe</a></li>
+        <li><a href="{% url 'all_about' %}">service</a></li>
+        <li><a href="{% url 'recipes' %}">Share your Recipe</a></li>
+    </ul>
+    </nav>
+    <main>
+        {% block content %}
+            default 
+        {% endblock %}
+    </main>
+</body>
+</html>
